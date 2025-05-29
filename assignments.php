@@ -52,8 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$teacher_id, $title, $description, $file_name]);
 }
 
-// Lấy danh sách bài tập
-$stmt = $pdo->query("SELECT * FROM assignments ORDER BY created_at DESC");
+// Chỉ lấy bài tập của giáo viên hiện tại
+$stmt = $pdo->prepare("SELECT * FROM assignments WHERE teacher_id = ? ORDER BY created_at DESC");
+$stmt->execute([$user['id']]);
 $assignments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php include 'includes/sidebar.php'; ?>
