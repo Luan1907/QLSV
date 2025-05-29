@@ -11,6 +11,7 @@ if (isset($_POST['login'])) {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
+        session_regenerate_id(true);
         $_SESSION['user'] = $user;
         header('Location: profile.php');
         exit;
@@ -22,7 +23,7 @@ if (isset($_POST['login'])) {
 
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css"> 
 <div class="container">
     <h2>Đăng nhập</h2>
     <?php if (isset($error))

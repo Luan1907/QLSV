@@ -42,12 +42,7 @@ $messages = $stmt->fetchAll();
 <!DOCTYPE html>
 <html lang="vi">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Hồ sơ: <?= htmlspecialchars($profile['full_name']) ?></title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-</head>
+
 
 <?php include 'includes/sidebar.php'; ?>
 

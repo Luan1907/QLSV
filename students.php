@@ -110,7 +110,7 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <form method="POST" enctype="multipart/form-data" action="admin/update_user.php">
                 <input type="hidden" name="id" id="edit-id">
                 <input type="text" name="username" id="edit-username" placeholder="Tên đăng nhập" required>
-                <input type="text" name="password" id="edit-password" placeholder="Mật khẩu mới (nếu mu">
+                <input type="password" name="password" id="edit-password" placeholder="Mật khẩu mới">
                 <input type="text" name="full_name" id="edit-fullname" placeholder="Họ tên" required>
                 <input type="email" name="email" id="edit-email" placeholder="Email" required>
                 <input type="text" name="phone" id="edit-phone" placeholder="Số điện thoại">

@@ -49,7 +49,7 @@ $received_messages = $stmt->fetchAll();
     
 
     <!-- Popup form -->
-    <div id="editProfileModal" class="modal" style="display:none;">
+    <div id="editProfileModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Chỉnh sửa thông tin cá nhân</h3>
@@ -86,7 +86,7 @@ $received_messages = $stmt->fetchAll();
     <script>
         // JS mở modal
         document.getElementById('editProfileBtn').onclick = function () {
-            document.getElementById('editProfileModal').style.display = 'block';
+            document.getElementById('editProfileModal').style.display = 'flex';
         }
         // JS đóng modal
         document.querySelector('.close').onclick = function () {
