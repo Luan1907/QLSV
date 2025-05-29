@@ -21,9 +21,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_name = "";
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        $file_name = time() . "_" . basename($_FILES["file"]["name"]);
+        $allowed_ext = ['pdf', 'doc', 'docx', 'zip', 'rar'];
+        $max_size = 5 * 1024 * 1024; // 5MB
+
+        $original_name = $_FILES['file']['name'];
+        $file_size = $_FILES['file']['size'];
+        $file_tmp = $_FILES['file']['tmp_name'];
+        $ext = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
+
+        if (!in_array($ext, $allowed_ext)) {
+            echo "<p style='color:red;'>Chỉ chấp nhận các file: pdf, doc, docx, zip, rar.</p>";
+            exit();
+        }
+
+        if ($file_size > $max_size) {
+            echo "<p style='color:red;'>Kích thước file vượt quá 5MB.</p>";
+            exit();
+        }
+
+        $file_name = time() . "_" . basename($original_name);
         $target_path = "uploads/assignments/" . $file_name;
-        move_uploaded_file($_FILES["file"]["tmp_name"], $target_path);
+
+        if (!move_uploaded_file($file_tmp, $target_path)) {
+            echo "<p style='color:red;'>Lỗi khi upload file.</p>";
+            exit();
+        }
     }
 
     $stmt = $pdo->prepare("INSERT INTO assignments (teacher_id, title, description, file) VALUES (?, ?, ?, ?)");
@@ -101,7 +123,7 @@ $assignments = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <label>Mô tả:</label><br>
         <textarea name="description"></textarea><br><br>
 
-        <label>Chọn file bài tập:</label><br>
+        <label>Chọn file bài tập (PDF, Word, ZIP, RAR, max 5MB):</label><br>
         <input type="file" name="file"><br><br>
 
         <input type="submit" value="Giao bài">

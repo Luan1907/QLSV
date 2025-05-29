@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2025 at 10:19 AM
+-- Generation Time: May 29, 2025 at 08:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -36,6 +36,14 @@ CREATE TABLE `assignments` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `teacher_id`, `title`, `description`, `file`, `created_at`) VALUES
+(1, 1, 'ádasd', 'ádasd', '1744491758_assignments.php', '2025-04-12 21:02:38'),
+(2, 1, 'ádasd', 'ádasd', '1744491794_assignments.php', '2025-04-12 21:03:14');
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +63,9 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `content`, `created_at`) VALUES
-(17, 1, 1, '11111', '2025-03-28 08:57:10');
+(17, 1, 1, '11111', '2025-03-28 08:57:10'),
+(18, 1, 9, '<script>alert(1)</script>', '2025-05-22 07:49:14'),
+(19, 1, 9, '&lt;script&gt;alert(1)&lt;/script&gt;', '2025-05-22 07:49:45');
 
 -- --------------------------------------------------------
 
@@ -70,6 +80,14 @@ CREATE TABLE `submissions` (
   `file` varchar(255) DEFAULT NULL,
   `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `submissions`
+--
+
+INSERT INTO `submissions` (`id`, `student_id`, `assignment_id`, `file`, `submitted_at`) VALUES
+(1, 14, 2, '1744547322_default-avatar.jpg', '2025-04-13 12:28:42'),
+(2, 9, 2, '1747125261_yande.re 1222548 bikini cameltoe loli re_shimashima see_through swimsuits thong wet.jpg', '2025-05-13 08:34:21');
 
 -- --------------------------------------------------------
 
@@ -94,8 +112,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `phone`, `avatar`, `role`) VALUES
 (1, 'teacher01', '$2y$10$bCFYCCi1AVqP9NpqCXA9uuQg7JSzXmtonMmlIUUkzHAj1zR8HoijC', 'Giáo viên ', 'teacher@example.com', '0123456789', '1743048416_img_avatar.png', 'teacher'),
-(9, 'asd', '$2y$10$G36iRF8YNLzzEy9MYxSjeebgDremkr5H.RFuEniQbyTNZd6OcoMFC', 'luan', 'sadasd@gmail.com', '02132154', '', 'student'),
-(13, 'áđá', '$2y$10$fs/u3BmxmlUHiHUZModCheT.M3/NprsTZUtna1Jzbgx3nDkLDaWAu', 'áđá', 'aaaa@gmail.com', '2165216523', '', 'student');
+(9, 'asd', '$2y$10$sDodSAMrRFQv.vheL7AAHO1r1YW7I3juz6ebGuVstuJh/gtKP9oLi', 'luan', 'sadasd@gmail.com', '02132154', '1747125241_yande.re 1222547 areola dress garter_belt no_bra re_shimashima skirt_lift stockings thighhighs wedding_dress.jpg', 'student'),
+(13, 'áđá', '$2y$10$fs/u3BmxmlUHiHUZModCheT.M3/NprsTZUtna1Jzbgx3nDkLDaWAu', 'áđá', 'aaaa@gmail.com', '2165216523', '', 'student'),
+(14, 'luan', '$2y$10$.xfqLgtNrO2PXoeNPq2XsuZLSoiC1sDwb2TEH6UIsPzTOMb7nblCu', 'nonamexd', 'asdaaaa@gmail.com', 'asd', '', 'student');
 
 --
 -- Indexes for dumped tables
@@ -139,25 +158,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
