@@ -14,7 +14,6 @@
             <a href="assignments.php">Giao bài tập</a>
         <?php else: ?>
             <a href="submit_assignment.php">Xem bài tập</a>
-            <a href="users/edit.php">Chỉnh sửa thông tin</a>
         <?php endif; ?>
         <a href="students.php">Danh sách sinh viên</a>
         <a href="teachers.php">Danh sách giảng viên</a>

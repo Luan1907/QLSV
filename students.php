@@ -58,9 +58,7 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <img src="uploads/avatars/<?= htmlspecialchars($student['avatar']) ?>" alt="avatar" width="40"
                                 height="40">
                         <?php else: ?>
-                            <img src="default-avatar.jpg" alt="avatar" width="40"
-                        <?php endif; ?>
-                    </td>
+                            <img src="default-avatar.jpg" alt="avatar" width="40" <?php endif; ?> </td>
                     <td>
                         <a href="profile_view.php?id=<?= $student['id'] ?>">
                             <?= htmlspecialchars($student['username']) ?>
