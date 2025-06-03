@@ -17,18 +17,17 @@ $received_messages = $stmt->fetchAll();
 
 if (isset($_GET['error'])) {
     $errors = [
-        'missing_fields' => 'Vui lòng điền đầy đủ các trường bắt buộc.',
-        'invalid_avatar_format' => 'Định dạng ảnh đại diện không hợp lệ (chỉ chấp nhận jpg, jpeg, png, gif).',
-        'avatar_too_large' => 'Ảnh đại diện vượt quá 2MB.',
-        'avatar_upload_failed' => 'Tải ảnh đại diện lên thất bại.',
-        'insert_failed' => 'Cập nhật thất bại. Vui lòng thử lại.'
+        'invalid_avatar_format' => 'Định dạng ảnh không hợp lệ.',
+        'avatar_too_large'      => 'Ảnh đại diện quá lớn (tối đa 2MB).',
+        'avatar_upload_failed'  => 'Tải ảnh đại diện thất bại.',
+        'update_failed'         => 'Cập nhật thông tin thất bại.',
     ];
     $msg = $errors[$_GET['error']] ?? 'Cập nhật thất bại. Vui lòng thử lại.';
     echo "<div style='color: red; font-weight: bold;'>$msg</div>";
 }
 
 if (isset($_GET['success']) && $_GET['success'] === 'added') {
-    echo "<div style='color: green; font-weight: bold;'>Thêm sinh viên thành công.</div>";
+    echo "<div style='color: green; font-weight: bold;'>Cập nhật thành công.</div>";
 }
 
 ?>
