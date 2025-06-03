@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
 
 ?>
 
-<link rel="stylesheet" href="css/style.css"> 
+<link rel="stylesheet" href="css/style.css">
 <div class="container">
     <h2>Đăng nhập</h2>
     <?php if (isset($error))
