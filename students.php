@@ -14,6 +14,24 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Xử lý thêm sinh viên
 
+if (isset($_GET['error'])) {
+    $errors = [
+        'missing_fields' => 'Vui lòng điền đầy đủ các trường bắt buộc.',
+        'invalid_avatar_format' => 'Định dạng ảnh đại diện không hợp lệ (chỉ chấp nhận jpg, jpeg, png, gif).',
+        'avatar_too_large' => 'Ảnh đại diện vượt quá 2MB.',
+        'avatar_upload_failed' => 'Tải ảnh đại diện lên thất bại.',
+        'username_exists' => 'Tên đăng nhập đã tồn tại.',
+        'insert_failed' => 'Thêm sinh viên thất bại. Vui lòng thử lại.'
+    ];
+    $msg = $errors[$_GET['error']] ?? 'Đã xảy ra lỗi không xác định.';
+    echo "<div style='color: red; font-weight: bold;'>❌ $msg</div>";
+}
+
+if (isset($_GET['success']) && $_GET['success'] === 'added') {
+    echo "<div style='color: green; font-weight: bold;'>✅ Thêm sinh viên thành công.</div>";
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
